@@ -1,0 +1,8 @@
+instance_vpc_cidr = "10.100.0.0/16"
+rds_vpc_cidr = "10.200.0.0/16"
+instance_public_subnet_cidr_1 = "10.100.0.0/20"
+instance_public_subnet_cidr_2 = "10.100.16.0/20"
+instance_private_subnet_cidr_1 = "10.100.32.0/20"
+instance_private_subnet_cidr_2 = "10.100.48.0/20"
+rds_private_subnet_cidr_1 = "10.200.0.0/20"
+rds_private_subnet_cidr_2 = "10.200.16.0/20"
