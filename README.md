@@ -10,7 +10,7 @@
 - infrastructure command directory - **layer 1**
 <pre>
  <code>
- $ cd vpc/infrastructure
+ $ cd vpc/
     
  $ terraform init -backend-config="infrastructure-prod.config"
     
