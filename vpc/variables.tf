@@ -1,15 +1,15 @@
 variable "region" {
-  default = "ap-northeast-2",
+  default = "ap-northeast-2"
   description = "AWS Region"
 }
 
 variable "instance_vpc_cidr" {
-  default = "10.100.0.0/16",
+  default = "10.100.0.0/16"
   description = "Instance Vpc Cidr"
 }
 
 variable "rds_vpc_cidr" {
-  default = "10.200.0.0/16",
+  default = "10.200.0.0/16"
   description = "Rds Vpc Cidr"
 }
 
