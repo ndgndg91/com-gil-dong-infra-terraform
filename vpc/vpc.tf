@@ -145,7 +145,29 @@ resource "aws_internet_gateway" "instance_vpc_internet_gateway" {
 }
 
 resource "aws_route" "instance_public_internet_gateway_route" {
-  route_table_id = aws_route_table.instance_public_route_table.id
-  gateway_id = aws_internet_gateway.instance_vpc_internet_gateway.id
+  route_table_id         = aws_route_table.instance_public_route_table.id
+  gateway_id             = aws_internet_gateway.instance_vpc_internet_gateway.id
   destination_cidr_block = "0.0.0.0/0"
+}
+
+resource "aws_vpc_peering_connection" "instance_vpc_peering_rds_vpc" {
+  vpc_id      = aws_vpc.instance_vpc.id // requester
+  peer_vpc_id = aws_vpc.rds_vpc.id // accepter
+  auto_accept = true
+}
+
+resource "aws_route" "instance_private_to_rds_private" {
+  route_table_id = aws_route_table.instance_private_route_table.id
+
+  vpc_peering_connection_id = aws_vpc_peering_connection.instance_vpc_peering_rds_vpc.id
+
+  destination_cidr_block = aws_vpc.rds_vpc.cidr_block
+}
+
+resource "aws_route" "rds_private_to_instance_private" {
+  route_table_id = aws_route_table.rds_private_route_table.id
+
+  vpc_peering_connection_id = aws_vpc_peering_connection.instance_vpc_peering_rds_vpc.id
+
+  destination_cidr_block = aws_vpc.instance_vpc.cidr_block
 }
