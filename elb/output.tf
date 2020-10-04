@@ -17,3 +17,7 @@ output "api_load_balancer_dns_name" {
 output "api_load_balancer_arn" {
   value = aws_alb.api_load_balancer.arn
 }
+
+output "api_load_balancer_name" {
+  value = aws_alb.api_load_balancer.name
+}
