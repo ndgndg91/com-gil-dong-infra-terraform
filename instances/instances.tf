@@ -80,11 +80,20 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
   role = aws_iam_role.ec2_iam_role.name
 }
 
-// jdk11 설치와 aws cli access_key, secret_key 설정 된 이미지
 data "aws_ami" "launch_configuration_ami" {
   most_recent = true
-  owners = ["self"]
-  name_regex = "^aws-linux2-jdk11.*$"
+  owners = ["amazon"]
+
+  filter {
+    name   = "owner-alias"
+    values = ["amazon"]
+  }
+
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
 }
 
 resource "aws_launch_configuration" "ec2_private_launch_configuration" {
@@ -98,8 +107,16 @@ resource "aws_launch_configuration" "ec2_private_launch_configuration" {
 
   user_data = <<EOF
     #!/bin/bash
+    sudo yum update -y
+    sudo yum remove java-1.7.0-openjdk -y
+    sudo curl -o java11.rpm https://d3pxv6yz143wms.cloudfront.net/11.0.5.10.1/java-11-amazon-corretto-devel-11.0.5.10-1.x86_64.rpm https://d3pxv6yz143wms.cloudfront.net/11.0.5.10.1/java-11-amazon-corretto-devel-11.0.5.10-1.x86_64.rpm
+    sudo yum localinstall java11.rpm -y
+    aws configure set aws_access_key_id {test}
+    aws configure set aws_secret_access_key {test}
+    aws configure set region ap-northeast-2
     aws s3api get-object --bucket spring-boot-app-jars --key test/jpashop.jar jpashop.jar
     nohup java -jar jpashop.jar &
+
   EOF
 }
 
@@ -114,8 +131,16 @@ resource "aws_launch_configuration" "ec2_public_launch_configuration" {
 
   user_data = <<EOF
     #!/bin/bash
+    sudo yum update -y
+    sudo yum remove java-1.7.0-openjdk -y
+    sudo curl -o java11.rpm https://d3pxv6yz143wms.cloudfront.net/11.0.5.10.1/java-11-amazon-corretto-devel-11.0.5.10-1.x86_64.rpm https://d3pxv6yz143wms.cloudfront.net/11.0.5.10.1/java-11-amazon-corretto-devel-11.0.5.10-1.x86_64.rpm
+    sudo yum localinstall java11.rpm -y
+    aws configure set aws_access_key_id {test}
+    aws configure set aws_secret_access_key {test}
+    aws configure set region ap-northeast-2
     aws s3api get-object --bucket spring-boot-app-jars --key test/jpashop.jar jpashop.jar
     nohup java -jar jpashop.jar &
+
   EOF
 }
 
