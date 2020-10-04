@@ -26,3 +26,20 @@ variable "remote_alb_state_bucket" {
 variable "remote_alb_state_key" {
   description = "ALB state s3 key"
 }
+
+variable "ec2_instances_type" {
+  description = "EC2 Instance type to launch"
+}
+
+variable "key_pair_name" {
+  default     = "terraform-provision"
+  description = "Keypair to use to connect to EC2 Instances"
+}
+
+variable "max_instance_size" {
+  description = "Maximum number of instances to launch"
+}
+
+variable "min_instance_size" {
+  description = "Minimum number of instance to launch"
+}
