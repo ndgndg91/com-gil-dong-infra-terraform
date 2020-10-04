@@ -19,3 +19,16 @@
  $ terraform apply -var-file="production.tfvars"
  </code>
 </pre>
+
+- security group command directory - **layer 2**
+<pre>
+ <code>
+ $ cd security-group/
+    
+ $ terraform init -backend-config="security-group-prod.config"
+    
+ $ terraform plan -var-file="production.tfvars"
+    
+ $ terraform apply -var-file="production.tfvars"
+ </code>
+</pre>
