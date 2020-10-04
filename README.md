@@ -32,3 +32,16 @@
  $ terraform apply -var-file="production.tfvars"
  </code>
 </pre>
+
+- application load balancer command directory - **layer 3**
+<pre>
+ <code>
+ $ cd elb/
+    
+ $ terraform init -backend-config="elb-prod.config"
+    
+ $ terraform plan -var-file="production.tfvars"
+    
+ $ terraform apply -var-file="production.tfvars"
+ </code>
+</pre>
