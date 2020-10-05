@@ -45,3 +45,16 @@
  $ terraform apply -var-file="production.tfvars"
  </code>
 </pre>
+
+- application command directory - **layer 4**
+<pre>
+ <code>
+ $ cd instances/
+    
+ $ terraform init -backend-config="instances.config"
+    
+ $ terraform plan -var-file="production.tfvars"
+    
+ $ terraform apply -var-file="production.tfvars"
+ </code>
+</pre>

@@ -41,7 +41,7 @@ resource "aws_alb_target_group" "api_target_group" {
 
   health_check {
     interval = 30
-    path = "/health"
+    path = "/hello"
     healthy_threshold = 5
     unhealthy_threshold = 5
   }
