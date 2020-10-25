@@ -52,9 +52,9 @@ resource "aws_security_group" "instance_private_subnet_security_group" {
   vpc_id = data.terraform_remote_state.network_config.outputs.instance_vpc_id
 
   ingress {
-    from_port = 8080
-    protocol = "TCP"
-    to_port = 8080
+    from_port = 0
+    protocol = "-1"
+    to_port = 0
     cidr_blocks = [data.terraform_remote_state.network_config.outputs.instance_public_subnet_1_cidr_blocks,
                    data.terraform_remote_state.network_config.outputs.instance_public_subnet_2_cidr_blocks]
   }
