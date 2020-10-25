@@ -17,7 +17,7 @@ data "terraform_remote_state" "network_config" {
 
 resource "aws_security_group" "instance_public_subnet_security_group" {
   name = "Public ALB Security Group"
-  description = "ALB Security Group Allow 80 to 8080"
+  description = "ALB Security Group Allow 80 to 80"
   vpc_id = data.terraform_remote_state.network_config.outputs.instance_vpc_id
 
   ingress {
@@ -43,6 +43,30 @@ resource "aws_security_group" "instance_public_subnet_security_group" {
 
   tags = {
     Name = "Public ALB Security Group"
+  }
+}
+
+resource "aws_security_group" "open_vpn_security_group" {
+  name = "Open VPN Security Group"
+  description = "Open VPN Security Group Allow SSH, UDP"
+  vpc_id = data.terraform_remote_state.network_config.outputs.instance_vpc_id
+
+  ingress {
+    from_port = 22
+    protocol = "TCP"
+    to_port = 22
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 1194
+    protocol = "UDP"
+    to_port = 1194
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "Open VPN Security Group"
   }
 }
 
