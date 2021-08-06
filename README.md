@@ -10,51 +10,59 @@
 - infrastructure command directory - **layer 1**
 <pre>
  <code>
- $ cd vpc/
+ $ cd {env-name}/vpc/
     
  $ terraform init -backend-config="infrastructure-prod.config"
     
- $ terraform plan -var-file="production.tfvars"
+ $ terraform plan -var-file="{env-name}.tfvars" -out plan.out
     
- $ terraform apply -var-file="production.tfvars"
+ $ terraform apply plan.out
+
+ $ terraform destory -var-file="{env-name}.tfvars"
  </code>
 </pre>
 
 - security group command directory - **layer 2**
 <pre>
  <code>
- $ cd security-group/
+ $ cd {env-name}/security-group/
     
  $ terraform init -backend-config="security-group-prod.config"
     
- $ terraform plan -var-file="production.tfvars"
+ $ terraform plan -var-file="{env-name}.tfvars" -out plan.out
     
- $ terraform apply -var-file="production.tfvars"
+ $ terraform apply plan.out
+
+ $ terraform destory -var-file="{env-name}.tfvars"
  </code>
 </pre>
 
 - application load balancer command directory - **layer 3**
 <pre>
  <code>
- $ cd elb/
+ $ cd {env-name}/elb/
     
  $ terraform init -backend-config="elb-prod.config"
     
- $ terraform plan -var-file="production.tfvars"
+ $ terraform plan -var-file="{env-name}.tfvars" -out plan.out
     
- $ terraform apply -var-file="production.tfvars"
+ $ terraform apply plan.out
+
+ $ terraform destory -var-file="{env-name}.tfvars"
  </code>
 </pre>
 
 - application command directory - **layer 4**
 <pre>
  <code>
- $ cd instances/
+ $ cd {env-name}/instances/
     
  $ terraform init -backend-config="instances.config"
     
- $ terraform plan -var-file="production.tfvars"
+ $ terraform plan -var-file="{env-name}.tfvars" -out plan.out
     
- $ terraform apply -var-file="production.tfvars"
+ $ terraform apply plan.out
+
+ $ terraform destory -var-file="{env-name}.tfvars"
  </code>
 </pre>

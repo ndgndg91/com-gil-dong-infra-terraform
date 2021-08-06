@@ -1,5 +1,4 @@
 variable "region" {
-  default = "ap-northeast-2"
   description = "AWS Region"
 }
 
@@ -32,7 +31,6 @@ variable "ec2_instances_type" {
 }
 
 variable "key_pair_name" {
-  default     = "terraform-provision"
   description = "Keypair to use to connect to EC2 Instances"
 }
 

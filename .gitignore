@@ -1,2 +1,4 @@
 .idea
 .terraform
+
+prod/**/plan.out

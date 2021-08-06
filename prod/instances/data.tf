@@ -1,11 +1,3 @@
-provider "aws" {
-  region = var.region
-}
-
-terraform {
-  backend "s3" {}
-}
-
 data "terraform_remote_state" "network_config" {
   backend = "s3"
   config = {
