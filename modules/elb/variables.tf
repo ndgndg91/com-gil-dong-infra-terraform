@@ -1,7 +1,7 @@
 variable "public_subnet_security_group_id" {}
 
-variable "instance_public_subnet_1_id" {}
+variable "application_public_1_subnet_id" {}
 
-variable "instance_public_subnet_2_id" {}
+variable "application_public_2_subnet_id" {}
 
-variable "instance_vpc_id" {}
+variable "application_vpc_id" {}

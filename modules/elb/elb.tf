@@ -6,8 +6,8 @@ resource "aws_alb" "api_load_balancer" {
   ]
 
   subnets         = [
-    var.instance_public_subnet_1_id,
-    var.instance_public_subnet_2_id,
+    var.application_public_1_subnet_id,
+    var.application_public_2_subnet_id,
   ]
 }
 
@@ -15,7 +15,7 @@ resource "aws_alb_target_group" "api_target_group" {
   name     = "API-Target-Group"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = var.instance_vpc_id
+  vpc_id   = var.application_vpc_id
   target_type = "instance"
 
   health_check {
