@@ -9,15 +9,16 @@ terraform {
 module "vpc" {
   source = "../../modules/vpc"
 
+  region = var.region
   availability_zone_1 = var.availability_zone_1
   availability_zone_2 = var.availability_zone_2
-  instance_private_subnet_cidr_1 = var.instance_private_subnet_cidr_1
-  instance_private_subnet_cidr_2 = var.instance_private_subnet_cidr_2
-  instance_public_subnet_cidr_1 = var.instance_public_subnet_cidr_1
-  instance_public_subnet_cidr_2 = var.instance_public_subnet_cidr_2
-  instance_vpc_cidr = var.instance_vpc_cidr
-  rds_private_subnet_cidr_1 = var.rds_private_subnet_cidr_1
-  rds_private_subnet_cidr_2 = var.rds_private_subnet_cidr_2
+
+  application_vpc_cidr = var.application_vpc_cidr
   rds_vpc_cidr = var.rds_vpc_cidr
-  region = var.region
+  application_public_1_subnet_cidr = var.application_public_1_subnet_cidr
+  application_public_2_subnet_cidr = var.application_public_2_subnet_cidr
+  application_private_1_subnet_cidr = var.application_private_1_subnet_cidr
+  application_private_2_subnet_cidr = var.application_private_2_subnet_cidr
+  rds_private_1_subnet_cidr = var.rds_private_1_subnet_cidr
+  rds_private_2_subnet_cidr = var.rds_private_2_subnet_cidr
 }

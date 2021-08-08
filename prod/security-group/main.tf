@@ -9,11 +9,12 @@ terraform {
 module "security_group" {
   source = "../../modules/security-group"
 
-  instance_private_subnet_1_cidr_blocks = data.terraform_remote_state.network_config.outputs.instance_private_subnet_1_cidr_blocks
-  instance_private_subnet_2_cidr_blocks = data.terraform_remote_state.network_config.outputs.instance_private_subnet_2_cidr_blocks
-  instance_public_subnet_1_cidr_blocks = data.terraform_remote_state.network_config.outputs.instance_public_subnet_1_cidr_blocks
-  instance_public_subnet_2_cidr_blocks = data.terraform_remote_state.network_config.outputs.instance_public_subnet_2_cidr_blocks
-  instance_vpc_id =  data.terraform_remote_state.network_config.outputs.instance_vpc_id
-  rds_vpc_id =  data.terraform_remote_state.network_config.outputs.rds_vpc_id
+  application_private_1_subnet_cidr_blocks = data.terraform_remote_state.network_config.outputs.application_private_1_subnet_cidr_blocks
+  application_private_2_subnet_cidr_blocks = data.terraform_remote_state.network_config.outputs.application_private_2_subnet_cidr_blocks
+  application_public_1_subnet_cidr_blocks = data.terraform_remote_state.network_config.outputs.application_public_1_subnet_cidr_blocks
+  application_public_2_subnet_cidr_blocks = data.terraform_remote_state.network_config.outputs.application_public_2_subnet_cidr_blocks
+  application_vpc_cidr_blocks = data.terraform_remote_state.network_config.outputs.application_vpc_cidr_blocks
+  application_vpc_id = data.terraform_remote_state.network_config.outputs.application_vpc_id
+  rds_vpc_id = data.terraform_remote_state.network_config.outputs.rds_vpc_id
   region = var.region
 }

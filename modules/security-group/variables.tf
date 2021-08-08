@@ -1,27 +1,11 @@
-variable "region" {
-  description = "AWS Region"
-}
+variable "region" {}
 
-variable "instance_vpc_id" {
-  description = "Instance VPC Id"
-}
+variable "application_vpc_id" {}
+variable "application_vpc_cidr_blocks" {}
 
-variable "instance_public_subnet_1_cidr_blocks" {
-  description = "Instance Public Subnet 1 CIDR Blocks"
-}
+variable "application_public_1_subnet_cidr_blocks" {}
+variable "application_public_2_subnet_cidr_blocks" {}
+variable "application_private_1_subnet_cidr_blocks" {}
+variable "application_private_2_subnet_cidr_blocks" {}
 
-variable "instance_public_subnet_2_cidr_blocks" {
-  description = "Instance Public Subnet 2 CIDR Blocks"
-}
-
-variable "instance_private_subnet_1_cidr_blocks" {
-  description = "Instance Private Subnet 1 CIDR Blocks"
-}
-
-variable "instance_private_subnet_2_cidr_blocks" {
-  description = "Instance Private Subnet 2 CIDR Blocks"
-}
-
-variable "rds_vpc_id" {
-  description = "RDS VPC Id"
-}
+variable "rds_vpc_id" {}
